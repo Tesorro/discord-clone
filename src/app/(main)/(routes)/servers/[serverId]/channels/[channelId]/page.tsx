@@ -4,14 +4,14 @@ import { db } from '@/lib/db';
 import { redirect } from 'next/navigation';
 import { ChatHeader } from '@/components/chat/chat-header';
 
-interface ChennelIdPageProps {
+interface ChannelIdPageProps {
   params: {
     serverId: string;
     channelId: string;
   };
 }
 
-const ChannelIdPage = async ({ params }: ChennelIdPageProps) => {
+const ChannelIdPage = async ({ params }: ChannelIdPageProps) => {
   const profile = await currentProfile();
 
   if (!profile) {
