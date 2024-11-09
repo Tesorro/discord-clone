@@ -1,10 +1,6 @@
 'use client';
 import { useEffect, useState } from 'react';
-import {
-  AudioConference,
-  LiveKitRoom,
-  VideoConference,
-} from '@livekit/components-react';
+import { LiveKitRoom, VideoConference } from '@livekit/components-react';
 import '@livekit/components-styles';
 import { useUser } from '@clerk/nextjs';
 import { Loader2 } from 'lucide-react';
@@ -54,8 +50,7 @@ export const MediaRoom = ({ chatId, audio, video }: MediaRoomProps) => {
       video={video}
       audio={audio}
     >
-      {video && audio && <VideoConference />}
-      {!video && audio && <AudioConference />}
+      <VideoConference />
     </LiveKitRoom>
   );
 };
