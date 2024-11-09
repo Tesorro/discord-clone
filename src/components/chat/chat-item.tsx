@@ -25,9 +25,9 @@ interface ChatItemProps {
     profile: Profile;
   };
   timestamp: string;
-  fileUrl: string;
+  fileUrl: string | null;
   deleted: boolean;
-  currentMember: string;
+  currentMember: Member;
   isUpdated: boolean;
   socketUrl: string;
   socketQuery: Record<string, string>;
@@ -104,7 +104,7 @@ export const ChatItem = ({
 
   useEffect(() => {
     form.reset({ content });
-  }, [content]);
+  }, [content, form]);
   const fileType = fileUrl?.split('.').pop();
 
   const isAdmin = currentMember.role === MemberRole.ADMIN;

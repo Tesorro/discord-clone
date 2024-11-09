@@ -5,15 +5,15 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from '@/components/ui/tooltip';
-import { ALIGN_OPTIONS, SIDE_OPTIONS } from '@radix-ui/react-popper';
 
-type Side = (typeof SIDE_OPTIONS)[number];
-type Align = (typeof ALIGN_OPTIONS)[number];
+type Side = 'top' | 'right' | 'bottom' | 'left';
+type Align = 'start' | 'center' | 'end';
+
 interface ActionTooltipProps {
   label: string;
   children: React.ReactNode;
-  side: Side;
-  align: Align;
+  side?: 'top' | 'right' | 'bottom' | 'left';
+  align?: 'start' | 'center' | 'end';
 }
 export const ActionTooltip = ({
   children,
@@ -25,7 +25,7 @@ export const ActionTooltip = ({
     <TooltipProvider>
       <Tooltip delayDuration={50}>
         <TooltipTrigger asChild>{children}</TooltipTrigger>
-        <TooltipContent side={side} align={align}>
+        <TooltipContent side={side as Side} align={align as Align}>
           <p className={'font-semibold text-sm capitalize'}>
             {label.toLowerCase()}
           </p>
