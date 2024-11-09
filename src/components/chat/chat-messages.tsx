@@ -5,7 +5,7 @@ import { format } from 'date-fns';
 import { ChatWelcome } from '@/components/chat/chat-welcome';
 import { useChatQuery } from '@/hooks/use-chat-query';
 import { Loader2, ServerCrash } from 'lucide-react';
-import { Fragment, useRef, ElementRef } from 'react';
+import { ElementRef, Fragment, useRef } from 'react';
 import { ChatItem } from '@/components/chat/chat-item';
 import { useChatSocket } from '@/hooks/use-chat-socket';
 import { useChatScroll } from '@/hooks/use-chat-scroll';
@@ -64,10 +64,10 @@ export const ChatMessages = ({
     count: data?.pages?.[0]?.items?.length ?? 0,
   });
 
-  if (status === 'loading') {
+  if (status === 'loading' || status === 'pending') {
     return (
       <div className={'flex flex-col flex-1 justify-center items-center'}>
-        <Loader2 className={'h-7 w-7 text-zinc-500 anumate-spin my-4'} />
+        <Loader2 className={'h-7 w-7 text-zinc-500 animate-spin my-4'} />
         <p className={'text-xs text-zinc-500 dark:text-zinc-400'}>
           Loading messages...
         </p>
