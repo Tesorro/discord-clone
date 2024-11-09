@@ -42,6 +42,7 @@ export const useChatQuery = ({
       // если мы подключены через сокет то пользуемся его функционалом, иначе пользуемся функционалом tanstackQuery
       // если при отправке сообщений в консоли появляются ошибки связанные с websocket, то можно захардкодить строку: refetchInterval: 1000,
       refetchInterval: isConnected ? false : 1000,
+      initialPageParam: undefined,
     });
 
   return {

@@ -30,12 +30,13 @@ import {
   DropdownMenuSeparator,
   DropdownMenuSub,
   DropdownMenuSubContent,
-  DropdownMenuTrigger,
   DropdownMenuSubTrigger,
+  DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { MemberRole } from '@prisma/client';
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
+
 const roleIconMap = {
   GUEST: null,
   MODERATOR: <ShieldCheck className={'h-4 w-4 text-indigo-500'} />,
@@ -65,7 +66,7 @@ export const MembersModal = () => {
       router.refresh();
       onOpen('members', { server: response.data });
     } catch (error) {
-      console.log('error');
+      console.log('error', error);
     } finally {
       setLoadingId('');
     }
@@ -83,7 +84,7 @@ export const MembersModal = () => {
       router.refresh();
       onOpen('members', { server: response.data });
     } catch (error) {
-      console.log();
+      console.log('error', error);
     } finally {
       setLoadingId('');
     }
