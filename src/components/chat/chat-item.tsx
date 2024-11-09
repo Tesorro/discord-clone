@@ -199,7 +199,7 @@ export const ChatItem = ({
                     'text-[10px] mx-2 text-zinc-500 dark:text-zinc-400'
                   }
                 >
-                  (edited)
+                  (edited) {/* TODO: Перенести в поле с датой сообщения */}
                 </span>
               )}
             </p>
