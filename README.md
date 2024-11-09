@@ -95,13 +95,13 @@
 ## 🎨 Скриншоты
 
 ### Главный экран чата
-![Main Chat Screenshot](![Main Chat](https://github.com/Tesorro/discord-clone/blob/main/2.png))
+![Main Chat](https://github.com/Tesorro/discord-clone/blob/main/2.png)
 
 ### Аудиоконференция
-![Audio Conference Screenshot](![Audio Conference](https://github.com/Tesorro/discord-clone/blob/main/3.png))
+![Audio Conference](https://github.com/Tesorro/discord-clone/blob/main/3.png)
 
 ### Видеоконференция
-![Video Conference Screenshot](![Video Conference](https://github.com/Tesorro/discord-clone/blob/main/4.png))
+![Video Conference](https://github.com/Tesorro/discord-clone/blob/main/4.png)
 
 ---
 
