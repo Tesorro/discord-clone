@@ -1,16 +1,27 @@
 'use client';
 import { useEffect, useState } from 'react';
-import { LiveKitRoom, VideoConference } from '@livekit/components-react';
+import {
+  LiveKitRoom,
+  VideoConference,
+  ConnectionQualityIndicator,
+  ParticipantAudioTile,
+  ParticipantTile,
+  ParticipantName,
+  useParticipants,
+  LayoutContextProvider,
+  AudioConference,
+} from '@livekit/components-react';
 import '@livekit/components-styles';
 import { useUser } from '@clerk/nextjs';
 import { Loader2 } from 'lucide-react';
+import { CustomAudioConference } from '@/components/chat/conference/conference-audio';
 
 interface MediaRoomProps {
   chatId: string;
   video: boolean;
   audio: boolean;
 }
-
+// TODO: consider to use useIsSpeaking
 export const MediaRoom = ({ chatId, audio, video }: MediaRoomProps) => {
   const { user } = useUser();
   const [token, setToken] = useState('');
@@ -42,15 +53,28 @@ export const MediaRoom = ({ chatId, audio, video }: MediaRoomProps) => {
   }
 
   return (
-    <LiveKitRoom
-      data-lk-theme={'default'}
-      serverUrl={process.env.NEXT_PUBLIC_LIVEKIT_URL}
-      token={token}
-      connect={true}
-      video={video}
-      audio={audio}
-    >
-      <VideoConference />
-    </LiveKitRoom>
+    <LayoutContextProvider>
+      <LiveKitRoom
+        className={'!bg-white dark:!bg-[#313338] flex-1'}
+        data-lk-theme={'default'}
+        serverUrl={process.env.NEXT_PUBLIC_LIVEKIT_URL}
+        token={token}
+        connect={true}
+        video={video}
+        audio={audio}
+      >
+        <NestedComponent />
+        {video && <VideoConference />}
+        {!video && <CustomAudioConference />}
+      </LiveKitRoom>
+    </LayoutContextProvider>
   );
+};
+
+const NestedComponent = () => {
+  const participants = useParticipants();
+  // useEffect(() => {
+  //   console.log('isSpeaking', participants[0].isSpeaking);
+  // }, [participants]);
+  return <></>;
 };
